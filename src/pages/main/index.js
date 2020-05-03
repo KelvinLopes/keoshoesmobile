@@ -9,18 +9,20 @@ export default function Main( {navigation}) {
     return(
 
       <Header>
-
+    <>
+      <Text> Page Main </Text>
         <Logo>
-        <Image source={logo} />
+          <Image source={logo} alt="Logo"/>
         </Logo>
 
-        <Text> Page Main </Text>
         <Icon>
         <ShopppingCart
           name="shopping-basket"
-          color="orange" size={35}
+          color="orange" size={90}
           onPress={ () => navigation.navigate("Cart")}/>
           </Icon>
+
+         </>
       </Header>
     );
   }
