@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
       <Stack.Navigator
         initialRouteName="Main"
         screenOptions= { {
-          headerStyle: { backgroundColor: 'rgba(71, 93, 243, 1)' },
+          headerStyle: { backgroundColor: 'rgba(30, 33, 41, 1)' },
           headerTintColor: 'rgba(72, 167, 243, 1)',
           headerTitleAlign: 'center',
          } }
@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
           <Stack.Screen
             name="Main"
             component = {Main}
-            options={ { title: 'KeoShoes Products' }}
+            options={ { title: '' }}
           />
 
           <Stack.Screen
