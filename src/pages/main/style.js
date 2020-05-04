@@ -108,3 +108,38 @@ export const List = styled.FlatList.attrs({
 })`
   marginTop: 0;
 `
+
+
+export const CardProductsContainer = styled.View`
+
+width: 300px;
+height: 250px;
+
+
+alignItems: center;
+justifyContent: center;
+position: relative;
+
+flexDirection: column;
+`;
+
+export const ImageProduct = styled.Image.attrs({
+  source: logo,
+  resizeMode: 'cover',
+})`
+
+width: 190px;
+height: 25px;
+
+flexDirection: row;
+alignItems: center;
+background: transparent;
+justifyContent: center;
+
+
+marginBottom: 80px;
+marginTop: 80px;
+marginRight: 0;
+position: relative;
+
+`;

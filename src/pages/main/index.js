@@ -1,12 +1,59 @@
-import React from 'react';
-import { Text, Image, ScrollView, Scr } from 'react-native';
+import React, { Component } from 'react';
+import { Text, Image, ScrollView } from 'react-native';
+import api from '../../services/api';
+import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import logo from '../../assets/images/logo.png';
-import { Header, Icon, Logo, GroupItems, BodyPageHome, CardProducts } from './style';
+import { Header,
+  Icon,
+  Logo,
+  GroupItems,
+  BodyPageHome,
+  CardProducts,
+  CardProductsContainer,
+  ImageProduct
+}
+  from './style';
 
-export default function Main( {navigation}) {
+export default class Main extends Component {
 
-    return(
+  static navigationOptions = {
+    title: 'Cart'
+  }
+
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func,
+    }).isRequired
+  };
+
+  state = {
+    products: []
+  }
+
+componentDidMount() {
+  this.products();
+}
+
+products = async () => {
+
+  const response = await api.get('/products');
+
+  const data = response.data.map( product => ({
+    ...product,
+  }))
+
+  this.setState({ products: data })
+};
+
+handleNavigate = () => {
+  const { navigation } = this.props;
+  navigation.navigate('Cart')
+}
+
+render() {
+
+  return(
     <>
       <Header>
         <GroupItems>
@@ -15,7 +62,7 @@ export default function Main( {navigation}) {
           <ShopppingCart
             name="shopping-basket"
             color="#475df3" size={80}
-            onPress={ () => navigation.navigate("Cart")}/>
+            onPress={ () => this.handleNavigate()}/>
             </Icon>
           </GroupItems>
       </Header>
@@ -26,11 +73,35 @@ export default function Main( {navigation}) {
         <BodyPageHome >
 
           <CardProducts>
-          <Text> Page Home </Text>
+            <CardProductsContainer>
+              <Text> Product Title </Text>
+              <ImageProduct source={logo} />
+              <Text>Link procuct details</Text>
+            </CardProductsContainer>
           </CardProducts>
 
-           <CardProducts>
-          <Text> Page Home </Text>
+          <CardProducts>
+            <CardProductsContainer>
+              <Text> Product Title </Text>
+              <ImageProduct source={logo} />
+              <Text>Link procuct details</Text>
+            </CardProductsContainer>
+          </CardProducts>
+
+          <CardProducts>
+            <CardProductsContainer>
+              <Text> Product Title </Text>
+              <ImageProduct source={logo} />
+              <Text>Link procuct details</Text>
+            </CardProductsContainer>
+          </CardProducts>
+
+          <CardProducts>
+            <CardProductsContainer>
+              <Text> Product Title </Text>
+              <ImageProduct source={logo} />
+              <Text>Link procuct details</Text>
+            </CardProductsContainer>
           </CardProducts>
 
         </BodyPageHome>
@@ -39,5 +110,7 @@ export default function Main( {navigation}) {
       </>
     );
   }
+}
+
 
 
