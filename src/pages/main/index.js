@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, Image } from 'react-native';
+import { Text, Image, ScrollView, Scr } from 'react-native';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import logo from '../../assets/images/logo.png';
-import { Header, Icon, Logo, GroupItems, BodyPageHome } from './style';
+import { Header, Icon, Logo, GroupItems, BodyPageHome, CardProducts } from './style';
 
 export default function Main( {navigation}) {
 
@@ -19,10 +19,23 @@ export default function Main( {navigation}) {
             </Icon>
           </GroupItems>
       </Header>
-
+      <ScrollView
+        horizontal = {true}
+        showsHorizontalScrollIndicator = {false}
+        >
         <BodyPageHome >
-            <Text> Page Home </Text>
+
+          <CardProducts>
+          <Text> Page Home </Text>
+          </CardProducts>
+
+           <CardProducts>
+          <Text> Page Home </Text>
+          </CardProducts>
+
         </BodyPageHome>
+        </ScrollView>
+
       </>
     );
   }

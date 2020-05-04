@@ -73,4 +73,38 @@ export const BodyPageHome = styled.View`
 
 background: #282a36;
 height: 800px;
+alignItems: center;
+flexDirection: row;
+
+width: auto;
+
 `;
+
+export const CardProducts = styled.View`
+
+
+marginTop: -200px;
+marginBottom: 200px;
+marginLeft: 20px;
+background: #343746;
+
+width: 300px;
+height: 250px;
+
+border: 0.8px;
+borderRadius: 15px;
+borderColor: #50fa7b;
+alignItems: center;
+justifyContent: center;
+position: relative;
+
+flexDirection: column;
+`;
+
+
+export const List = styled.FlatList.attrs({
+  showVerticalScrollIndicator: false,
+  showHorizontalScrollIndicator: false,
+})`
+  marginTop: 0;
+`
