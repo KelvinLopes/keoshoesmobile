@@ -1,5 +1,5 @@
 module.exports = {
-  
+
   root: true,
   extends: '@react-native-community',
 
@@ -8,12 +8,14 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb', 'prettier', 'prettier/react'
+    'airbnb',
+    'prettier',
+    'prettier/react',
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
-    __DEV__: 'readonly' 
+    __DEV__: 'readonly'
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -24,7 +26,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'react', 'prettier'
+    'react',
+    'prettier',
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -34,7 +37,7 @@ module.exports = {
         extension: [ '.jsx', '.js' ]
       }
     ],
-      'import/prefer-default-export': 'off'
+      'import/prefer-default-export': 'off',
   },
 };
 

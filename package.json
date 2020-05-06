@@ -11,11 +11,14 @@
     "server": "json-server server.json -p 3333 -w"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.2.1",
     "@react-navigation/stack": "^5.2.16",
+    "async-storage": "^0.1.0",
     "axios": "^0.19.2",
     "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^6.11.0",
     "immer": "^6.0.3",
     "polished": "^3.5.2",
     "proptypes": "^1.1.0",

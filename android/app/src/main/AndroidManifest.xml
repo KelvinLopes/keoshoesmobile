@@ -3,6 +3,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Some Chromebooks don't support touch. Although not essencial,
+          it's a good idea to explicitly include this declaration.
+    -->
+
+    <uses-feature android:name="android.hardware.touchscreen"
+                  android:required="false" />
+
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"

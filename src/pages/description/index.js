@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, FlatList, Linking } from 'react-native';
 import api from '../../services/api'
 import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
-import logo from '../../assets/images/logo.png';
+
 
 import {
   Header,
@@ -42,20 +41,6 @@ export default class Main extends Component {
 
   this.loadProducts();
 
-  const products = await AsyncStorage.getItem('products');
-  if (products) {
-    this.setState({ products: JSON.parse(products) });
-  }
-
-
-}
-
-
-async componentDidUpdate(_, prevState) {
-  const { products } = await this.state;
-  if (prevState.products !== this.setState.products) {
-    AsyncStorage.setItem('products', JSON.stringify(products));
-  }
 }
 
 loadProducts = async () => {
@@ -82,7 +67,7 @@ showProducts = ({ item }) => {
       <CardProducts >
         <TextProductTitle> {item.title} </TextProductTitle>
         <ImageProduct source={{ uri: item.image }} />
-        <TextProductDescription>{item.id}</TextProductDescription>
+        <TextProductDescription>{item.description}</TextProductDescription>
       </CardProducts>
      </CardProductsContainer>
     </BodyPageHome>

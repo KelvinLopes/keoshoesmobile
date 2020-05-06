@@ -3,6 +3,7 @@ import { createStackNavigator  } from '@react-navigation/stack';
 
 import Main from './pages/main';
 import Cart from './pages/cart';
+import Description from './pages/description';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,12 @@ const Stack = createStackNavigator();
             name="Cart"
             component = { Cart }
             options={ { title: 'My Cart' } }
+          />
+
+          <Stack.Screen
+            name="Description"
+            component = { Description }
+            options={ { title: 'Description Product' } }
           />
 
       </Stack.Navigator>
