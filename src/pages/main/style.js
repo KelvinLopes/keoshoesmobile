@@ -101,7 +101,7 @@ marginTop: 120px;
 marginBottom: 540px;
 marginLeft: 20px;
 marginRight: 20px;
-background: #343746;
+background: rgba(0, 0, 0, 0.5);
 
 width: 300px;
 height: 320px;
@@ -133,8 +133,8 @@ export const ImageProduct = styled.Image.attrs({
   resizeMode: 'cover',
 })`
 
-width: 120px;
-height: 120px;
+width: 220px;
+height: 170px;
 
 flexDirection: row;
 alignItems: center;
@@ -142,22 +142,43 @@ background: transparent;
 justifyContent: center;
 
 
-marginBottom: 80px;
-marginTop: 80px;
+marginBottom: 4px;
+marginTop: 20px;
 marginRight: 0;
 position: relative;
+borderRadius: 15px;
 
 `;
+
 
 
 export const TextProductTitle = styled.Text`
 
-color: #fff;
+marginTop: 0;
+paddingTop: 20px;
+justifyContent: center;
+alignItems: center;
+color: #475df3;
+
+textAlign: center;
+
+fontWeight: bold;
+
+fontFamily: Ubuntu;
+fontSize: 15px;
 
 `;
 
-export const TextProductDescription = styled.Text`
 
-color: #fff;
+export const ToDescriptionItem = styled.Text`
 
+fontFamily: Ubuntu;
+fontSize: 18px;
+
+
+marginTop: 20px;
+paddingTop: 20px;
+justifyContent: center;
+alignItems: center;
+color: #50fa7b;
 `;

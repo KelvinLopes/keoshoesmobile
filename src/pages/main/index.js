@@ -16,7 +16,7 @@ import {
   ImageProduct,
   List,
   TextProductTitle,
-  TextProductDescription
+  ToDescriptionItem,
 }
   from './style';
 
@@ -35,7 +35,7 @@ export default class Main extends Component {
   };
 
   state = {
-    products: []
+    products: [],
   }
 
   async componentDidMount() {
@@ -74,6 +74,11 @@ handleNavigate = () => {
   navigation.navigate('Cart')
 }
 
+handleNavigateDescriptionItem = (item) => {
+  const { navigation } = this.props;
+  navigation.navigate('Description',item)
+}
+
 showProducts = ({ item }) => {
 
   return(
@@ -82,14 +87,16 @@ showProducts = ({ item }) => {
       <CardProducts >
         <TextProductTitle> {item.title} </TextProductTitle>
         <ImageProduct source={{ uri: item.image }} />
-        <TextProductDescription>{item.id}</TextProductDescription>
+        <ToDescriptionItem onPress={
+            () => this.handleNavigateDescriptionItem('Description',item)}>
+            Detatlhes
+           </ToDescriptionItem>
       </CardProducts>
      </CardProductsContainer>
     </BodyPageHome>
 
   )
 }
-
 
 render() {
 

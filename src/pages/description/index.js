@@ -19,9 +19,7 @@ import {
 }
   from './style';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
-export default class Main extends Component {
+export default class Description extends Component {
 
   static navigationOptions = {
     title: 'Cart'
@@ -34,7 +32,8 @@ export default class Main extends Component {
   };
 
   state = {
-    products: []
+    products: [],
+   // idProduct: this.props.navigation.item.id
   }
 
   async componentDidMount() {
@@ -45,13 +44,13 @@ export default class Main extends Component {
 
 loadProducts = async () => {
 
-  const response = await api.get('/products');
+  const response = await api.get(`/products`);
 
   const data = response.data.map( product => ({
     ...product,
   }));
 
-  this.setState({ products: data })
+  this.setState({ products: data, idProduct: this.props.navigation.item.id })
 };
 
 handleNavigate = () => {
@@ -59,15 +58,17 @@ handleNavigate = () => {
   navigation.navigate('Cart')
 }
 
-showProducts = ({ item }) => {
+showProductsDetails = () => {
+
+  const { idProduct } =this.state;
 
   return(
     <BodyPageHome>
-     <CardProductsContainer key={item.id}>
+     <CardProductsContainer key={item.idProduct.id} item={item.idProduct}>
       <CardProducts >
-        <TextProductTitle> {item.title} </TextProductTitle>
-        <ImageProduct source={{ uri: item.image }} />
-        <TextProductDescription>{item.description}</TextProductDescription>
+        <TextProductTitle> {item.idProduct.title} </TextProductTitle>
+        <ImageProduct source={{ uri: item.idProduct.image }} />
+        <TextProductDescription>{item.idProduct.description}</TextProductDescription>
       </CardProducts>
      </CardProductsContainer>
     </BodyPageHome>
@@ -77,6 +78,7 @@ showProducts = ({ item }) => {
 
 
 render() {
+
 
   const { products } = this.state;
 
@@ -98,9 +100,9 @@ render() {
         <List
           data={products}
           extraData={this.props}
-          keyExtractor={item => String(item.id)}
+          keyExtractor={ idProduct => String(idProduct.id)}
           horizontal={true}
-          renderItem={this.showProducts}
+          renderItem={this.showProductsDetails}
         />
 
       </>
@@ -108,4 +110,3 @@ render() {
     );
   }
 }
-
