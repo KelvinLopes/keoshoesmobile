@@ -176,9 +176,85 @@ fontFamily: Ubuntu;
 fontSize: 18px;
 
 
-marginTop: 20px;
+marginTop: -10px;
 paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
 color: #50fa7b;
+`;
+
+
+export const TextButtonAddToCart = styled.Text`
+
+marginTop: -15px;
+paddingTop: 20px;
+justifyContent: center;
+alignItems: center;
+color: #475df3;
+
+textAlign: center;
+
+fontWeight: bold;
+
+fontFamily: Ubuntu;
+fontSize: 15px;
+
+flex: 1;
+
+`;
+
+
+export const AddButtonToCartProduct = styled.TouchableOpacity`
+
+background: #50fa7b;
+
+width: 280px;
+height: 30px;
+borderRadius: 15px;
+
+alignItems: center;
+marginTop: auto;
+marginBottom: auto;
+
+
+`;
+
+export const ContainerIconShooppingButtonAddToCart = styled.View`
+
+  background: #028985;
+  width: 35px;
+  height: 31px;
+  marginLeft: -12px;
+  flexDirection: row;
+
+  alignItems: center;
+  justifyContent: center;
+  borderRadius: 15px;
+
+`;
+
+export const ProductAmount = styled.View`
+
+  padding: 12px;
+  flexDirection: row;
+  alignItems: center;
+  justifyContent: space-between;
+  padding: 12px;
+
+  marginTop: auto;
+  marginBottom: auto;
+
+`;
+
+
+export const ProductTextAmount = styled.Text`
+
+  color: #fff;
+  marginTop: 0;
+  marginLeft: 2px;
+  marginRight: 0;
+  marginBottom: 10px;
+
+  fontWeight: bold;
+
 `;

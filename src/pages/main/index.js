@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, FlatList, Linking } from 'react-native';
+import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity } from 'react-native';
 import api from '../../services/api'
 import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
+import ShopppingCartButton from 'react-native-vector-icons/MaterialIcons';
 import logo from '../../assets/images/logo.png';
 
 import {
@@ -17,6 +18,11 @@ import {
   List,
   TextProductTitle,
   ToDescriptionItem,
+  TextButtonAddToCart,
+  AddButtonToCartProduct,
+  ProductAmount,
+  ProductTextAmount,
+  ContainerIconShooppingButtonAddToCart
 }
   from './style';
 
@@ -79,6 +85,10 @@ handleNavigateDescriptionItem = (item) => {
   navigation.navigate('Description',item)
 }
 
+handleAddProductToCart = () => {
+  return
+}
+
 showProducts = ({ item }) => {
 
   return(
@@ -91,6 +101,17 @@ showProducts = ({ item }) => {
             () => this.handleNavigateDescriptionItem('Description',item)}>
             Detatlhes
            </ToDescriptionItem>
+
+           <AddButtonToCartProduct onPress={() => this.handleAddProductToCart} >
+            <ProductAmount>
+              <ContainerIconShooppingButtonAddToCart>
+                <ShopppingCartButton name="add-shopping-cart" color="#fff" size={20} />
+                <ProductTextAmount>0</ProductTextAmount>
+              </ContainerIconShooppingButtonAddToCart>
+                <TextButtonAddToCart>Adicionar Produto</TextButtonAddToCart>
+            </ProductAmount>
+             </AddButtonToCartProduct>
+
       </CardProducts>
      </CardProductsContainer>
     </BodyPageHome>

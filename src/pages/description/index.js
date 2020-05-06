@@ -60,7 +60,6 @@ handleNavigate = () => {
 
 showProductsDetails = () => {
 
-  const { idProduct } =this.state;
 
   return(
     <BodyPageHome>
