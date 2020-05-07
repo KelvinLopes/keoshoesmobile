@@ -150,11 +150,9 @@ borderRadius: 15px;
 
 `;
 
-
-
 export const TextProductTitle = styled.Text`
 
-marginTop: 0;
+marginTop: -15px;
 paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
@@ -169,14 +167,29 @@ fontSize: 15px;
 
 `;
 
-
 export const ToDescriptionItem = styled.Text`
 
 fontFamily: Ubuntu;
 fontSize: 18px;
 
 
-marginTop: -10px;
+marginTop: -23px;
+marginBottom: 5px;
+paddingTop: 20px;
+justifyContent: center;
+alignItems: center;
+color: #50fa7b;
+`;
+
+
+export const PriceProduct = styled.Text`
+
+fontFamily: Ubuntu;
+fontSize: 18px;
+
+
+marginTop: -15px;
+marginBottom: 10px;
 paddingTop: 20px;
 justifyContent: center;
 alignItems: center;

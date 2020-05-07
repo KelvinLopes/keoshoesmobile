@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity } from 'react-native';
 import api from '../../services/api'
+import { formatPrice } from '../../util/formatprice';
 import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import ShopppingCartButton from 'react-native-vector-icons/MaterialIcons';
+
 import logo from '../../assets/images/logo.png';
 
 import {
@@ -22,7 +24,8 @@ import {
   AddButtonToCartProduct,
   ProductAmount,
   ProductTextAmount,
-  ContainerIconShooppingButtonAddToCart
+  ContainerIconShooppingButtonAddToCart,
+  PriceProduct
 }
   from './style';
 
@@ -70,6 +73,7 @@ loadProducts = async () => {
 
   const data = response.data.map( product => ({
     ...product,
+    priceFormatted: formatPrice(product.price)
   }));
 
   this.setState({ products: data })
@@ -101,6 +105,8 @@ showProducts = ({ item }) => {
             () => this.handleNavigateDescriptionItem('Description',item)}>
             Detatlhes
            </ToDescriptionItem>
+
+        <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
 
            <AddButtonToCartProduct onPress={() => this.handleAddProductToCart} >
             <ProductAmount>
