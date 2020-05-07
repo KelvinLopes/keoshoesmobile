@@ -44,7 +44,7 @@ export default class Description extends Component {
 
 loadProducts = async () => {
 
-  const response = await api.get(`/products`);
+  const response = await api.get(`/products/description`);
 
   const data = response.data.map( product => ({
     ...product,

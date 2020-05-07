@@ -5,6 +5,8 @@ import Main from './pages/main';
 import Cart from './pages/cart';
 import Description from './pages/description';
 
+import './config/Reactotron';
+
 const Stack = createStackNavigator();
 
 

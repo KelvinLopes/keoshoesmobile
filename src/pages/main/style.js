@@ -9,6 +9,7 @@ export const Header = styled.View`
   height: 150px;
 
   background: #1e2129;
+
   flexDirection: column;
   alignItems: center;
   justifyContent: space-between;
@@ -227,7 +228,7 @@ borderRadius: 15px;
 
 alignItems: center;
 marginTop: auto;
-marginBottom: auto;
+marginBottom: 5px;
 
 
 `;

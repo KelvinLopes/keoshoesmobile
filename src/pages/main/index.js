@@ -56,9 +56,7 @@ export default class Main extends Component {
     this.setState({ products: JSON.parse(products) });
   }
 
-
 }
-
 
 async componentDidUpdate(_, prevState) {
   const { products } = await this.state;
@@ -77,6 +75,7 @@ loadProducts = async () => {
   }));
 
   this.setState({ products: data })
+
 };
 
 handleNavigate = () => {
@@ -96,6 +95,7 @@ handleAddProductToCart = () => {
 showProducts = ({ item }) => {
 
   return(
+
     <BodyPageHome>
      <CardProductsContainer key={item.id}>
       <CardProducts >
