@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity } from 'react-native';
+
 import api from '../../services/api'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as CartActions from '../../store/modules/cart/actions';
+
+
 import { formatPrice } from '../../util/formatprice';
 import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
@@ -31,7 +37,7 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-export default class Main extends Component {
+class Main extends Component {
 
   static navigationOptions = {
     title: 'Cart'
@@ -88,11 +94,14 @@ handleNavigateDescriptionItem = (item) => {
   navigation.navigate('Description',item)
 }
 
-handleAddProductToCart = () => {
-  return
+handleAddProductToCart = id => {
+  const { addToCartRequest } = this.props;
+  addToCartRequest(id);
 }
 
 showProducts = ({ item }) => {
+
+  const { amount } = this.props;
 
   return(
 
@@ -108,11 +117,11 @@ showProducts = ({ item }) => {
 
         <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
 
-           <AddButtonToCartProduct onPress={() => this.handleAddProductToCart} >
+           <AddButtonToCartProduct onPress={() => this.handleAddProductToCart(item.id)} >
             <ProductAmount>
               <ContainerIconShooppingButtonAddToCart>
                 <ShopppingCartButton name="add-shopping-cart" color="#fff" size={20} />
-                <ProductTextAmount>0</ProductTextAmount>
+                <ProductTextAmount>{amount[item.id || 0]}</ProductTextAmount>
               </ContainerIconShooppingButtonAddToCart>
                 <TextButtonAddToCart>Adicionar Produto</TextButtonAddToCart>
             </ProductAmount>
@@ -157,4 +166,19 @@ render() {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {})
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);
 
