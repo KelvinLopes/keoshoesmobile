@@ -5,7 +5,7 @@ import './config/ReactotronConfig';
 import store from './store';
 import NavigationService from './services/navigation';
 
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { StatusBar } from 'react-native';
 
 

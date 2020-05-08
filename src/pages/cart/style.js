@@ -142,6 +142,12 @@ export const ProductAmount = styled.TextInput.attrs({
   marginRight: 5px;
 
 `;
+
+export const ButtonControlsProductAmount = styled.TouchableOpacity``;
+
+export const ButtonControlsProductDelete = styled.TouchableOpacity``;
+
+
 export const GroupControlsAddAndRemove = styled.View`
 
   background: transparent;
@@ -159,6 +165,16 @@ export const TextTotal = styled.Text`
   fontSize: 35px;
 
 `;
+
+export const TextSubtotal = styled.Text`
+
+  alignItems: center;
+  justifyContent: center;
+  color:#475df3 ;
+  fontSize: 35px;
+
+`;
+
 
 export const TextTotalValue = styled.Text`
 

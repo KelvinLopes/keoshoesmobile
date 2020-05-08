@@ -24,6 +24,9 @@ import {
   PriceProduct,
   SpaceDelete,
   GroupControlsAddAndRemove,
+  ButtonControlsProductAmount,
+  ButtonControlsProductDelete,
+  TextSubtotal,
   TotalValueProduct,
   TextTotal,
   TextTotalValue
@@ -31,7 +34,7 @@ import {
   from './style';
 
 
-export default function Cart(
+function Cart(
   { navigation,
     products,
     total,
@@ -51,43 +54,47 @@ export default function Cart(
       <BodyPageHome>
       <CardProductsContainer>
 
-      <TotalValueProduct>
-                <TextTotal> Total</TextTotal>
-                <TextTotalValue> {total}</TextTotalValue>
-              </TotalValueProduct>
-
-
         {products.map(product =>
           <CardProducts key={product.id}>
-          <ImageProduct source={{ uri: product,image }} />
+          <ImageProduct source={{ uri: product.image }} />
             <TextProductTitle> {product.title} </TextProductTitle>
             <PriceProduct> {product.priceFormatted} </PriceProduct>
-
+              <TextSubtotal>{product.subtotal}</TextSubtotal>
+            <TextTotal>Total</TextTotal>
+            <TextTotalValue>{total}</TextTotalValue>
 
               <ProductControls  >
               <GroupControlsAddAndRemove>
+
+              <ButtonControlsProductAmount onPress={ () => increment(product)}>
                 <ButtonIncrement
                       name="remove-circle-outline"
                       size={30}
                       color="#475df3"
                     />
+                  </ButtonControlsProductAmount>
 
                   <ProductAmount value={String(product.amount)}/>
 
+                  <ButtonControlsProductAmount onPress={ () => decrement(product) }>
                     <ButtonDrecement
-                      name="add-circle-outline"
-                      size={30}
-                      color="#475df3"
-                    />
+                        name="add-circle-outline"
+                        size={30}
+                        color="#475df3"
+                      />
+                  </ButtonControlsProductAmount>
+
                     </GroupControlsAddAndRemove>
 
                     <SpaceDelete />
-                    <ButtonDeleteItem
-                      name="delete-forever"
-                      size={30}
-                      color="#475df3"
-                    />
 
+                    <ButtonControlsProductDelete onPress={() => removeFromCart(product.id)}>
+                      <ButtonDeleteItem
+                        name="delete-forever"
+                        size={30}
+                        color="#475df3"
+                      />
+                    </ButtonControlsProductDelete>
                 </ProductControls>
 
         </CardProducts>
@@ -97,3 +104,22 @@ export default function Cart(
      </BodyPageHome>
     );
 }
+
+const mapStateToProps = state => ({
+  products: state.cart.map(product => ({
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+    priceFormatted: formatPrice(product.price)
+  })),
+  total: formatPrice(
+    state.cart.reduce(
+      (total, product) => total + product.price * product.amount,
+      0
+    )
+  ),
+});
+
+const mapDispatchProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+  export default connect(mapStateToProps, mapDispatchProps)(Cart);
