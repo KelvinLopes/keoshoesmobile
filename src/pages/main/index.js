@@ -44,7 +44,6 @@ class Main extends Component {
 
  async componentDidMount() {
   this.loadProducts();
-  this.showProducts();
 }
 
 loadProducts = async () => {
