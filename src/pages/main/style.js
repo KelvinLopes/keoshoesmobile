@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import logo from '../../assets/images/logo.png';
 
+export const Container = styled.View`
+  background: #1e2129;
+`;
+
 export const Header = styled.View`
 
 
@@ -180,6 +184,21 @@ paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
 color: #50fa7b;
+`;
+
+export const ButtonDetails = styled.TouchableOpacity`
+
+background: transparent;
+
+width: 30px;
+height: 30px;
+borderRadius: 15px;
+
+alignItems: center;
+marginTop: auto;
+marginBottom: 5px;
+
+
 `;
 
 

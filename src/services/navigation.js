@@ -6,17 +6,19 @@ function setNavigator(ref) {
   navigator = ref;
 }
 
+
+
 function navigate(routeName, params) {
   navigator.dispatch(
     NavigationActions.navigate({
       routeName,
-      params
+      params,
     })
-  );
+  )
 }
+
 
 export default {
   navigate,
   setNavigator,
 };
-

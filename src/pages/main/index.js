@@ -8,7 +8,6 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 
 import { formatPrice } from '../../util/formatprice';
-import PropTypes from 'proptypes';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import ShopppingCartButton from 'react-native-vector-icons/MaterialIcons';
 
@@ -25,64 +24,42 @@ import {
   ImageProduct,
   List,
   TextProductTitle,
+  ButtonDetails,
   ToDescriptionItem,
   TextButtonAddToCart,
   AddButtonToCartProduct,
   ProductAmount,
   ProductTextAmount,
   ContainerIconShooppingButtonAddToCart,
-  PriceProduct
+  PriceProduct,
+  Container
 }
   from './style';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
 class Main extends Component {
-
-  static navigationOptions = {
-    title: 'Cart'
-  }
-
-  static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func,
-    }).isRequired
-  };
 
   state = {
     products: [],
-  }
+  };
 
-  async componentDidMount() {
-
+ async componentDidMount() {
   this.loadProducts();
-
-  const products = await AsyncStorage.getItem('products');
-  if (products) {
-    this.setState({ products: JSON.parse(products) });
-  }
-
-}
-
-async componentDidUpdate(_, prevState) {
-  const { products } = await this.state;
-  if (prevState.products !== this.setState.products) {
-    AsyncStorage.setItem('products', JSON.stringify(products));
-  }
+  this.showProducts();
 }
 
 loadProducts = async () => {
 
   const response = await api.get('/products');
 
-  const data = response.data.map( product => ({
+const data = response.data.map( product => ({
     ...product,
     priceFormatted: formatPrice(product.price)
   }));
 
   this.setState({ products: data })
-
 };
+
+
 
 handleNavigate = () => {
   const { navigation } = this.props;
@@ -105,15 +82,18 @@ showProducts = ({ item }) => {
 
   return(
 
-    <BodyPageHome>
-     <CardProductsContainer key={item.id}>
-      <CardProducts >
+
+     <CardProductsContainer  key={item.id}>
+      <CardProducts>
         <TextProductTitle> {item.title} </TextProductTitle>
         <ImageProduct source={{ uri: item.image }} />
-        <ToDescriptionItem onPress={
-            () => this.handleNavigateDescriptionItem('Description',item)}>
-            Detatlhes
-           </ToDescriptionItem>
+
+        <ButtonDetails onPress={
+          () => this.handleNavigateDescriptionItem('Description',item)}>
+          <ToDescriptionItem >
+              Detalhes
+          </ToDescriptionItem>
+        </ButtonDetails>
 
         <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
 
@@ -121,7 +101,7 @@ showProducts = ({ item }) => {
             <ProductAmount>
               <ContainerIconShooppingButtonAddToCart>
                 <ShopppingCartButton name="add-shopping-cart" color="#fff" size={20} />
-                <ProductTextAmount>{amount[item.id || 0]}</ProductTextAmount>
+                <ProductTextAmount>{amount[item.id] || 0}</ProductTextAmount>
               </ContainerIconShooppingButtonAddToCart>
                 <TextButtonAddToCart>Adicionar Produto</TextButtonAddToCart>
             </ProductAmount>
@@ -129,14 +109,14 @@ showProducts = ({ item }) => {
 
       </CardProducts>
      </CardProductsContainer>
-    </BodyPageHome>
+
 
   )
 }
 
 render() {
 
-  const { products } = this.state;
+  const { products} = this.state;
 
   return(
     <>
@@ -151,17 +131,16 @@ render() {
             </Icon>
           </GroupItems>
       </Header>
-      < >
 
+      <BodyPageHome>
         <List
           data={products}
           extraData={this.props}
-          keyExtractor={item => String(item.id)}
-          horizontal={true}
+          keyExtractor={(item) => String(item.id)}
+          horizontal
           renderItem={this.showProducts}
         />
-
-      </>
+      </BodyPageHome>
     </>
     );
   }
@@ -181,4 +160,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Main);
-
