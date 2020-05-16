@@ -40,7 +40,6 @@ const Stack = createStackNavigator();
             component = { Description }
             options={ { title: 'Description Product' } }
           />
-
       </Stack.Navigator>
   );
 }

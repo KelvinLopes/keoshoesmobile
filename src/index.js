@@ -16,7 +16,7 @@ export default function App() {
       <>
       <Provider store={store}>
       <StatusBar barStyle="light-content" backgroundColor="rgba(30, 33, 41, 1)" />
-      <NavigationContainer ref={ navigatorRef => NavigationService.setNavigator(navigatorRef) }>
+      <NavigationContainer  ref={ navigatorRef => (NavigationService.setNavigator(navigatorRef)) }>
         <Routes />
       </NavigationContainer>
       </Provider>

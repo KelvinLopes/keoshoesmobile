@@ -50,17 +50,17 @@ loadProducts = async () => {
 
   const response = await api.get('/products');
 
-const data = response.data.map( product => ({
+  const data = response.data.map( product => ({
     ...product,
     priceFormatted: formatPrice(product.price)
   }));
 
   this.setState({ products: data })
+
 };
 
 
-
-handleNavigate = () => {
+handleNavigateToCart = () => {
   const { navigation } = this.props;
   navigation.navigate('Cart')
 }
@@ -70,9 +70,10 @@ handleNavigateDescriptionItem = (item) => {
   navigation.navigate('Description',item)
 }
 
-handleAddProductToCart = id => {
-  const { addToCartRequest } = this.props;
-  addToCartRequest(id);
+handleAddProductToCart = (id) => {
+  const { addToCartRequest, addToCartSuccess } = this.props;
+    addToCartRequest(id);
+    addToCartSuccess(id);
 }
 
 showProducts = ({ item }) => {
@@ -81,14 +82,14 @@ showProducts = ({ item }) => {
 
   return(
 
-
+    <BodyPageHome>
      <CardProductsContainer  key={item.id}>
       <CardProducts>
         <TextProductTitle> {item.title} </TextProductTitle>
         <ImageProduct source={{ uri: item.image }} />
 
         <ButtonDetails onPress={
-          () => this.handleNavigateDescriptionItem('Description',item)}>
+          () => this.handleNavigateDescriptionItem(item.id)}>
           <ToDescriptionItem >
               Detalhes
           </ToDescriptionItem>
@@ -108,7 +109,7 @@ showProducts = ({ item }) => {
 
       </CardProducts>
      </CardProductsContainer>
-
+    </BodyPageHome>
 
   )
 }
@@ -126,20 +127,19 @@ render() {
           <ShopppingCart
             name="shopping-basket"
             color="#475df3" size={80}
-            onPress={ () => this.handleNavigate()}/>
+            onPress={ () => this.handleNavigateToCart()}/>
             </Icon>
           </GroupItems>
       </Header>
 
-      <BodyPageHome>
+
         <List
           data={products}
-          extraData={this.props}
+          extraData={[products, this.props.amount]}
           keyExtractor={(item) => String(item.id)}
           horizontal
           renderItem={this.showProducts}
         />
-      </BodyPageHome>
     </>
     );
   }

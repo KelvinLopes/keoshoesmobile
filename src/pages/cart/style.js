@@ -54,15 +54,12 @@ flexDirection: column;
 
 
 export const ImageProduct = styled.Image.attrs({
-  source: logo,
   resizeMode: 'cover',
 })`
 
-/*width: 220px;
-height: 170px;*/
+width: 220px;
+height: 170px;
 
-width: 200px;
-height: 25px;
 
 flexDirection: row;
 alignItems: center;
@@ -199,6 +196,6 @@ export const TotalValueProduct = styled.View`
 export const SpaceDelete = styled.View`
 
   background: transparent;
-  width: 120px;
+  width: 60px;
   flexDirection: row;
 `;

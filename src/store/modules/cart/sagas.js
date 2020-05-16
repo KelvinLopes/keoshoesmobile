@@ -7,12 +7,16 @@ import { formatPrice } from '../../../util/formatprice';
 
 import { addToCartSuccess, updateAmountSuccess } from './actions';
 
-function* addToCart({ id }) {
+
+function* addToCart( { id } ) {
+
+ const stock = yield call(api.get, `/stock/${id}`);
+
   const productExists = yield select(state =>
     state.cart.find(product => product.id === id)
   );
 
-  const stock = yield call(api.get, `/stock/${id}`);
+  //const stock = yield call(api.get, `/stock/${id}`);
 
   const stockAmount = stock.data.amount;
   const currentAmount = productExists ? productExists.amount : 0;
@@ -24,7 +28,7 @@ function* addToCart({ id }) {
   }
 
   if (productExists) {
-    yield put(updateAmountSuccess(id, amount));
+    yield put(updateAmountSuccess( id, amount));
   } else {
     const response = yield call(api.get, `/products/${id}`);
 

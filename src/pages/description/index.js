@@ -33,7 +33,7 @@ export default class Description extends Component {
 
   state = {
     products: [],
-   // idProduct: this.props.navigation.item.id
+   //id: this.props.params.id
   }
 
   async componentDidMount() {
@@ -42,15 +42,15 @@ export default class Description extends Component {
 
 }
 
-loadProducts = async () => {
+loadProducts = async ({id}) => {
 
-  const response = await api.get(`/products/description`);
+  const response = await api.get(`/products/${id}`);
 
   const data = response.data.map( product => ({
     ...product,
   }));
 
-  this.setState({ products: data, idProduct: this.props.navigation.item.id })
+  this.setState({ products: data })
 };
 
 handleNavigate = () => {
@@ -63,14 +63,16 @@ showProductsDetails = () => {
 
   return(
     <BodyPageHome>
-     <CardProductsContainer key={item.idProduct.id} item={item.idProduct}>
-      <CardProducts >
-        <TextProductTitle> {item.idProduct.title} </TextProductTitle>
-        <ImageProduct source={{ uri: item.idProduct.image }} />
-        <TextProductDescription>{item.idProduct.description}</TextProductDescription>
-      </CardProducts>
-     </CardProductsContainer>
-    </BodyPageHome>
+    <CardProductsContainer  key={item.id}>
+     <CardProducts>
+       <TextProductTitle> {item.title} </TextProductTitle>
+       <ImageProduct source={{ uri: item.image }} />
+
+       <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
+
+     </CardProducts>
+    </CardProductsContainer>
+   </BodyPageHome>
 
   )
 }
@@ -96,12 +98,13 @@ render() {
       </Header>
       < >
 
-        <List
+      <List
           data={products}
-          extraData={this.props}
-          keyExtractor={ idProduct => String(idProduct.id)}
-          horizontal={true}
-          renderItem={this.showProductsDetails}
+          //extraData={this.props}
+          extraData={[products, this.props.amount]}
+          keyExtractor={(item) => String(item.id)}
+          horizontal
+          renderItem={this.showProducts}
         />
 
       </>

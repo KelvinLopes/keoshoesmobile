@@ -176,7 +176,7 @@ export const ToDescriptionItem = styled.Text`
 
 fontFamily: Ubuntu;
 fontSize: 18px;
-
+width: auto;
 
 marginTop: -23px;
 marginBottom: 5px;
@@ -190,7 +190,7 @@ export const ButtonDetails = styled.TouchableOpacity`
 
 background: transparent;
 
-width: 30px;
+width: auto;
 height: 30px;
 borderRadius: 15px;
 

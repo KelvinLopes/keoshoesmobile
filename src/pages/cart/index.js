@@ -34,13 +34,8 @@ import {
   from './style';
 
 
-function Cart(
-  { navigation,
-    products,
-    total,
-    removeFromCart,
-    updateAmountRequest }
-)  {
+function Cart( {navigation, products, total, removeFromCart, updateAmountRequest })  {
+
 
   function decrement(product) {
     updateAmountRequest(product.id, product.amount -1)
@@ -55,7 +50,7 @@ function Cart(
       <CardProductsContainer>
 
         {products.map(product =>
-          <CardProducts key={product.id}>
+          <CardProducts key={String(product.id)}>
           <ImageProduct source={{ uri: product.image }} />
             <TextProductTitle> {product.title} </TextProductTitle>
             <PriceProduct> {product.priceFormatted} </PriceProduct>
@@ -66,7 +61,7 @@ function Cart(
               <ProductControls  >
               <GroupControlsAddAndRemove>
 
-              <ButtonControlsProductAmount onPress={ () => increment(product)}>
+              <ButtonControlsProductAmount onPress={ () => decrement(product)}>
                 <ButtonIncrement
                       name="remove-circle-outline"
                       size={30}
@@ -76,7 +71,7 @@ function Cart(
 
                   <ProductAmount value={String(product.amount)}/>
 
-                  <ButtonControlsProductAmount onPress={ () => decrement(product) }>
+                  <ButtonControlsProductAmount onPress={ () => increment(product) }>
                     <ButtonDrecement
                         name="add-circle-outline"
                         size={30}
