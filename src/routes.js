@@ -32,7 +32,7 @@ const Stack = createStackNavigator();
           <Stack.Screen
             name="Cart"
             component = { Cart }
-            options={ { title: 'My Cart' } }
+            options={ { title: 'Total do carrinho' } }
           />
 
           <Stack.Screen

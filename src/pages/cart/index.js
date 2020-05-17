@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/formatprice';
+import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import logo from '../../assets/images/logo.png';
 
 
@@ -26,10 +27,16 @@ import {
   GroupControlsAddAndRemove,
   ButtonControlsProductAmount,
   ButtonControlsProductDelete,
-  TextSubtotal,
+  NumberSubtotal,
   TotalValueProduct,
-  TextTotal,
-  TextTotalValue
+  TextSubTotal,
+  TextTotalItemsCart,
+  TextTotalValue,
+  TextAmount,
+  TextUnicValue,
+  Scroll,
+  TottalHeader,
+  TottalItemsCart
 }
   from './style';
 
@@ -46,21 +53,30 @@ function Cart( {navigation, products, total, removeFromCart, updateAmountRequest
   }
 
     return(
+      <>
+        <TottalHeader>
+        <TextTotalValue>{total}</TextTotalValue>
+        </TottalHeader>
+        <TottalItemsCart>
+        <ShopppingCart name="add-shopping-cart" color="#50fa7b" size={35} />
+        <TextTotalItemsCart>com {products.length} itens</TextTotalItemsCart>
+        </TottalItemsCart>
+
+      <Scroll>
       <BodyPageHome>
       <CardProductsContainer>
-
         {products.map(product =>
           <CardProducts key={String(product.id)}>
           <ImageProduct source={{ uri: product.image }} />
             <TextProductTitle> {product.title} </TextProductTitle>
+            <TextUnicValue>Valor unitário</TextUnicValue>
             <PriceProduct> {product.priceFormatted} </PriceProduct>
-              <TextSubtotal>{product.subtotal}</TextSubtotal>
-            <TextTotal>Total</TextTotal>
-            <TextTotalValue>{total}</TextTotalValue>
+              <TextSubTotal>Subtotal</TextSubTotal>
+              <NumberSubtotal>{product.subtotal}</NumberSubtotal>
 
               <ProductControls  >
               <GroupControlsAddAndRemove>
-
+              <TextAmount>Quant.</TextAmount>
               <ButtonControlsProductAmount onPress={ () => decrement(product)}>
                 <ButtonIncrement
                       name="remove-circle-outline"
@@ -91,12 +107,12 @@ function Cart( {navigation, products, total, removeFromCart, updateAmountRequest
                       />
                     </ButtonControlsProductDelete>
                 </ProductControls>
-
         </CardProducts>
        )}
-
       </CardProductsContainer>
      </BodyPageHome>
+     </Scroll>
+     </>
     );
 }
 
@@ -108,13 +124,12 @@ const mapStateToProps = state => ({
   })),
   total: formatPrice(
     state.cart.reduce(
-      (total, product) => total + product.price * product.amount,
-      0
-    )
-  ),
+      (total, product) => {
+        return total + product.price * product.amount;
+    },0)),
 });
 
 const mapDispatchProps = dispatch =>
   bindActionCreators(CartActions,dispatch);
 
-  export default connect(mapStateToProps, mapDispatchProps)(Cart);
+export default connect(mapStateToProps, mapDispatchProps)(Cart);

@@ -6,20 +6,59 @@ import logo from '../../assets/images/logo.png';
 export const BodyPageHome = styled.View`
 
 background: #282a36;
-height: 800px;
+height: auto;
 alignItems: center;
+justifyContent: center;
 flexDirection: row;
 
 width: auto;
 
 `;
 
+export const TottalHeader = styled.View`
+
+backgroundColor: rgba(30, 33, 41, 1);
+height: 50px;
+alignItems: center;
+justifyContent: center;
+flexDirection: row;
+marginTop: 0;
+textAlign: center;
+zIndex: 5;
+
+width: auto;
+`;
+
+export const TottalItemsCart = styled.View`
+
+backgroundColor: rgba(30, 33, 41, 1);
+height: 50px;
+alignItems: center;
+justifyContent: center;
+flexDirection: row;
+marginTop: 0;
+textAlign: center;
+zIndex: 5;
+
+width: auto;
+`;
+
+export const Scroll = styled.ScrollView.attrs({
+
+  showsHorizontalScrollIndicator: false,
+
+})`
+height: auto;
+marginTop: 0;
+background: #282a36;
+`;
+
 export const CardProductsContainer = styled.View`
 
 width: auto;
-height: 250px;
+height: auto;
 
-marginTop: 190px;
+marginTop: 30px;
 marginBottom: 30px;
 alignItems: center;
 justifyContent: center;
@@ -29,11 +68,12 @@ flexDirection: column;
 
 `;
 
+
 export const CardProducts = styled.View`
 
 
-marginTop: 120px;
-marginBottom: 540px;
+marginTop: 0;
+marginBottom: 30px;
 marginLeft: 20px;
 marginRight: 20px;
 background: rgba(0, 0, 0, 0.5);
@@ -153,23 +193,44 @@ export const GroupControlsAddAndRemove = styled.View`
   flexDirection: row;
 `;
 
-
-export const TextTotal = styled.Text`
+export const TextAmount = styled.Text`
 
   alignItems: center;
   justifyContent: center;
-  color:#475df3 ;
-  fontSize: 35px;
+  color: #475df3;
+  fontSize: 20px;
 
 `;
 
-export const TextSubtotal = styled.Text`
+export const TextSubTotal = styled.Text`
+
+  alignItems: center;
+  justifyContent: center;
+  color: rgba(72, 167, 243, 1);
+  fontSize: 20px;
+
+`;
+
+export const NumberSubtotal = styled.Text`
 
   alignItems: center;
   justifyContent: center;
   color:#475df3 ;
-  fontSize: 35px;
+  fontSize: 25px;
 
+`;
+
+
+export const TextTotalItemsCart = styled.Text`
+
+  alignItems: center;
+  justifyContent: center;
+  textAlign: center;
+
+  fontSize: 20px;
+  fontFamily: Ubuntu;
+  color: #50fa7b;
+  marginTop: 5px;
 `;
 
 
@@ -177,12 +238,24 @@ export const TextTotalValue = styled.Text`
 
   alignItems: center;
   justifyContent: center;
+  textAlign: center;
 
-  fontSize: 30px;
+  fontSize: 28px;
   fontFamily: Ubuntu;
   color: #50fa7b;
+  marginTop: 5px;
+`;
+
+export const TextUnicValue = styled.Text`
+
+alignItems: center;
+justifyContent: center;
+color: rgba(72, 167, 243, 1);
+fontSize: 18px;
+marginTop: 10px;
 
 `;
+
 
 export const TotalValueProduct = styled.View`
 

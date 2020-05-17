@@ -31,8 +31,7 @@ import {
   ProductAmount,
   ProductTextAmount,
   ContainerIconShooppingButtonAddToCart,
-  PriceProduct,
-  Container
+  PriceProduct
 }
   from './style';
 
@@ -71,9 +70,8 @@ handleNavigateDescriptionItem = (item) => {
 }
 
 handleAddProductToCart = (id) => {
-  const { addToCartRequest, addToCartSuccess } = this.props;
+  const { addToCartRequest } = this.props;
     addToCartRequest(id);
-    addToCartSuccess(id);
 }
 
 showProducts = ({ item }) => {

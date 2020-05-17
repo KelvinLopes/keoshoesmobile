@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 import logo from '../../assets/images/logo.png';
 
-export const Container = styled.View`
-  background: #1e2129;
-`;
-
 export const Header = styled.View`
 
 
@@ -129,7 +125,7 @@ export const List = styled.FlatList.attrs({
 
 })`
 
-margin-top: 0;
+marginTop: 0;
 
 `
 
