@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
-import {  Header, Icon, GroupItems, ViewTextAmountCart, TextAmountCart } from './style';
+import {  Header, Icon, Logo, GroupItems, ViewTextAmountCart, TextAmountCart, HeaderBackground } from './style';
 
 
 function HeaderAppHome ({ navigation, cartSize }) {
   return (
+  <HeaderBackground>
     <Header>
     <GroupItems>
+    <Logo />
     <Icon>
       <ShopppingCart
         name="shopping-basket"
@@ -19,6 +21,7 @@ function HeaderAppHome ({ navigation, cartSize }) {
       </Icon>
       </GroupItems>
   </Header>
+</HeaderBackground>
 );
 }
 

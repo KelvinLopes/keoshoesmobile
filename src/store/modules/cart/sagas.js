@@ -5,7 +5,7 @@ import NavigationService from '../../../services/navigation';
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/formatprice';
 
-import { addToCartSuccess, updateAmountSuccess } from './actions';
+import { addToCartSuccess, updateAmountSuccess, readDescriptionSuccess } from './actions';
 
 
 function* addToCart( { id } ) {
@@ -16,14 +16,21 @@ function* addToCart( { id } ) {
     state.cart.find(product => product.id === id)
   );
 
-  //const stock = yield call(api.get, `/stock/${id}`);
-
   const stockAmount = stock.data.amount;
   const currentAmount = productExists ? productExists.amount : 0;
   const amount = currentAmount + 1;
 
   if (amount > stockAmount) {
-    Alert.alert('Quantidade solicitada fora de estoque');
+    Alert.alert(
+      "KeoShoes Stock",
+      'Quantidade solicitada fora de estoque 📦️.',
+      [
+        {
+          text: "Entendi"
+        }
+      ]
+
+      );
     return;
   }
 
@@ -51,7 +58,15 @@ function* updateAmount({ id, amount }) {
   const stockAmount = stock.data.amount;
 
   if (amount > stockAmount) {
-    Alert.alert('Quantidade solicitada fora de estoque');
+    Alert.alert(
+      'KeoShoes Stock',
+      'Quantidade solicitada fora de estoque 📦️.',
+      [
+      {
+        text: "Entendi"
+      }
+      ]
+      );
     return;
   }
 

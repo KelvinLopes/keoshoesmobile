@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-import logo from '../../assets/images/logo.png';
-
-
 export const BodyPageHome = styled.View`
 
 background:rgba(30, 33, 41, 1);
@@ -84,7 +81,7 @@ height: 400px;
 
 border: 0.8px;
 borderRadius: 15px;
-borderColor: #50fa7b;
+borderColor: rgba(21, 206, 188, 1);
 alignItems: center;
 justifyContent: center;
 position: relative;

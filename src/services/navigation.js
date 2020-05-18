@@ -12,12 +12,24 @@ function navigate(routeName, params) {
      screen: 'Main',
    },
    routeName,
-   params,
+   params
+   )
+ )
+}
+
+function navigateDescription(routeName, params) {
+  navigator.dispatch(
+   CommonActions.navigate('Description',{
+     screen: 'Main',
+   },
+   routeName,
+   params
    )
  )
 }
 
 export default {
   navigate,
+  navigateDescription,
   setNavigator,
 };

@@ -15,6 +15,22 @@ export const Header = styled.View`
   marginBottom: 0;
 `;
 
+export const HeaderBackground = styled.View`
+
+
+  width: auto;
+  height: auto;
+
+  background: rgba(72, 167, 243, 1);
+
+  flexDirection: column;
+  alignItems: center;
+  justifyContent: space-between;
+  zIndex: 5;
+  marginTop: 0;
+  marginBottom: 0;
+`;
+
 export const GroupItems = styled.View`
 
 marginTop: -130px;

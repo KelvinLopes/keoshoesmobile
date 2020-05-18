@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity } from 'react-native';
+import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity, Alert } from 'react-native';
 
 import api from '../../services/api'
 import { connect } from 'react-redux';
@@ -15,6 +15,7 @@ import logo from '../../assets/images/logo.png';
 
 import {
   Header,
+  HeaderBackground,
   Icon,
   Logo,
   GroupItems,
@@ -24,8 +25,8 @@ import {
   ImageProduct,
   List,
   TextProductTitle,
-  ButtonDetails,
-  ToDescriptionItem,
+  DescriptionItemContainer,
+  DescriptionItem,
   TextButtonAddToCart,
   AddButtonToCartProduct,
   ProductAmount,
@@ -60,15 +61,9 @@ loadProducts = async () => {
 
 };
 
-
 handleNavigateToCart = () => {
   const { navigation } = this.props;
   navigation.navigate('Cart')
-}
-
-handleNavigateDescriptionItem = (item) => {
-  const { navigation } = this.props;
-  navigation.navigate('Description',item)
 }
 
 handleAddProductToCart = (id) => {
@@ -85,15 +80,16 @@ showProducts = ({ item }) => {
     <BodyPageHome>
      <CardProductsContainer  key={item.id}>
       <CardProducts>
+        <ScrollView>
         <TextProductTitle> {item.title} </TextProductTitle>
         <ImageProduct source={{ uri: item.image }} />
 
-        <ButtonDetails onPress={
-          () => this.handleNavigateDescriptionItem(item.id)}>
-          <ToDescriptionItem >
-              Detalhes
-          </ToDescriptionItem>
-        </ButtonDetails>
+        <DescriptionItemContainer>
+        <DescriptionItem >
+              {item.description}
+          </DescriptionItem>
+        </DescriptionItemContainer>
+
 
         <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
 
@@ -106,7 +102,7 @@ showProducts = ({ item }) => {
                 <TextButtonAddToCart>Adicionar Produto</TextButtonAddToCart>
             </ProductAmount>
              </AddButtonToCartProduct>
-
+         </ScrollView>
       </CardProducts>
      </CardProductsContainer>
     </BodyPageHome>
@@ -120,6 +116,7 @@ render() {
 
   return(
     <>
+    <HeaderBackground>
       <Header>
         <GroupItems>
         <Logo />
@@ -134,7 +131,7 @@ render() {
             </Icon>
           </GroupItems>
       </Header>
-
+      </HeaderBackground>
 
         <List
           data={products}

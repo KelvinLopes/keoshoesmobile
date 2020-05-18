@@ -14,6 +14,24 @@ export const Header = styled.View`
   alignItems: center;
   justifyContent: space-between;
   zIndex: 5;
+  marginTop: -20px;
+  marginBottom: 5px;
+  borderRadius: 15px;
+`;
+
+export const HeaderBackground = styled.View`
+
+
+  width: auto;
+  height: auto;
+
+  background: rgba(72, 167, 243, 1);
+
+  flexDirection: column;
+  alignItems: center;
+  justifyContent: space-between;
+  zIndex: 5;
+  marginTop: 0;
   marginBottom: 0;
 `;
 
@@ -49,7 +67,6 @@ export const Logo = styled.Image.attrs({
   background: transparent;
   justifyContent: center;
 
-
   marginBottom: 0;
   marginTop: 70px;
   marginRight: 150px;
@@ -69,16 +86,14 @@ zIndex: 4;
 
 `;
 
-
 export const BodyPageHome = styled.View`
 
-background: #282a36;
+background: #1e2129;
 height: 800px;
 alignItems: center;
 flexDirection: row;
 
 width: auto;
-
 `;
 
 export const CardProductsContainer = styled.View`
@@ -90,15 +105,14 @@ height: 250px;
 alignItems: center;
 justifyContent: space-between;
 position: relative;
-
 flexDirection: row;
-
+marginBottom: 10px;
 `;
 
 export const CardProducts = styled.View`
 
 
-marginTop: 120px;
+marginTop: 140px;
 marginBottom: 540px;
 marginLeft: 20px;
 marginRight: 20px;
@@ -118,13 +132,11 @@ flexDirection: column;
 
 `;
 
-
 export const List = styled.FlatList.attrs({
 
   showsHorizontalScrollIndicator: false,
 
 })`
-
 marginTop: 0;
 
 `
@@ -145,6 +157,7 @@ justifyContent: center;
 
 marginBottom: 4px;
 marginTop: 20px;
+marginLeft: 30px;
 marginRight: 0;
 position: relative;
 borderRadius: 15px;
@@ -168,10 +181,9 @@ fontSize: 15px;
 
 `;
 
-export const ToDescriptionItem = styled.Text`
 
-fontFamily: Ubuntu;
-fontSize: 18px;
+export const DescriptionItemContainer = styled.View`
+
 width: auto;
 
 marginTop: -23px;
@@ -179,30 +191,40 @@ marginBottom: 5px;
 paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
-color: #50fa7b;
+
+
 `;
 
-export const ButtonDetails = styled.TouchableOpacity`
+export const DescriptionItem = styled.Text`
 
-background: transparent;
-
+fontFamily: Ubuntu;
+fontSize: 18px;
 width: auto;
-height: 30px;
-borderRadius: 15px;
 
+marginTop: 10px;
+marginLeft: 25px;
+marginBottom: 35px;
+paddingTop: 20px;
+justifyContent: center;
 alignItems: center;
-marginTop: auto;
-marginBottom: 5px;
+color: rgba(72, 167, 243, 1);
 
+textAlign: left;
 
 `;
 
+export const ScrollViewCardProduct = styled.ScrollView`
+
+  marginTop: auto;
+  marginLeft: 35px;
+
+
+`;
 
 export const PriceProduct = styled.Text`
 
 fontFamily: Ubuntu;
 fontSize: 18px;
-
 
 marginTop: -15px;
 marginBottom: 10px;
@@ -210,6 +232,7 @@ paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
 color: #50fa7b;
+textAlign: center;
 `;
 
 export const ViewTextAmountCart = styled.View`
@@ -230,7 +253,6 @@ fontFamily: Ubuntu;
 fontSize: 18px;
 textAlign: center;
 
-
 marginTop: -18px;
 marginBottom: 10px;
 paddingTop: 20px;
@@ -245,7 +267,7 @@ marginTop: -15px;
 paddingTop: 20px;
 justifyContent: center;
 alignItems: center;
-color: #475df3;
+color: rgba(72, 167, 243, 1);
 
 textAlign: center;
 
@@ -258,7 +280,6 @@ flex: 1;
 
 `;
 
-
 export const AddButtonToCartProduct = styled.TouchableOpacity`
 
 background: #50fa7b;
@@ -269,8 +290,8 @@ borderRadius: 15px;
 
 alignItems: center;
 marginTop: auto;
+marginLeft: 8px;
 marginBottom: 5px;
-
 
 `;
 
@@ -301,7 +322,6 @@ export const ProductAmount = styled.View`
 
 `;
 
-
 export const ProductTextAmount = styled.Text`
 
   color: #fff;
@@ -311,5 +331,6 @@ export const ProductTextAmount = styled.Text`
   marginBottom: 10px;
 
   fontWeight: bold;
+
 
 `;

@@ -4,10 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/formatprice';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
-import ShopppingEmptyCart from 'react-native-vector-icons/MaterialIcons';
 
 import { View, Text, ScrollView } from 'react-native';
-import logo from '../../assets/images/logo.png';
 
 import ButtonIncrement  from 'react-native-vector-icons/MaterialIcons';
 import ButtonDrecement from 'react-native-vector-icons/MaterialIcons';
@@ -36,7 +34,7 @@ import {
   Scroll,
   TotalHeader,
   TotalItemsCart,
-  EmptyCart
+  EmptyCart,
 }
   from './style';
 
@@ -85,7 +83,7 @@ function Cart( {navigation, products, total, removeFromCart, updateAmountRequest
                 <GroupControlsAddAndRemove>
                 <TextAmount>Quant.</TextAmount>
                 <ButtonControlsProductAmount onPress={ () => decrement(product)}>
-                  <ButtonIncrement
+                  <ButtonDrecement
                         name="remove-circle-outline"
                         size={30}
                         color="#475df3"
@@ -95,7 +93,7 @@ function Cart( {navigation, products, total, removeFromCart, updateAmountRequest
                     <ProductAmount value={String(product.amount)}/>
 
                     <ButtonControlsProductAmount onPress={ () => increment(product) }>
-                      <ButtonDrecement
+                      <ButtonIncrement
                           name="add-circle-outline"
                           size={30}
                           color="#475df3"

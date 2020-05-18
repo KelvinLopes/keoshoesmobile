@@ -1,114 +1,37 @@
-import React, { Component } from 'react';
-import api from '../../services/api'
-import PropTypes from 'proptypes';
-import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import * as CartActions from '../../store/modules/cart/actions';
 
 import {
-  Header,
-  Icon,
-  Logo,
-  GroupItems,
+
   BodyPageHome,
   CardProducts,
   CardProductsContainer,
   ImageProduct,
-  List,
   TextProductTitle,
   TextProductDescription
 }
   from './style';
 
-export default class Description extends Component {
-
-  static navigationOptions = {
-    title: 'Cart'
-  }
-
-  static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func,
-    }).isRequired
-  };
-
-  state = {
-    products: [],
-   //id: this.props.params.id
-  }
-
-  async componentDidMount() {
-
-  this.loadProducts();
-
-}
-
-loadProducts = async ({id}) => {
-
-  const response = await api.get(`/products/${id}`);
-
-  const data = response.data.map( product => ({
-    ...product,
-  }));
-
-  this.setState({ products: data })
-};
-
-handleNavigate = () => {
-  const { navigation } = this.props;
-  navigation.navigate('Cart')
-}
-
-showProductsDetails = () => {
-
+  function Description( {navigation, products })  {
 
   return(
     <BodyPageHome>
-    <CardProductsContainer  key={item.id}>
-     <CardProducts>
-       <TextProductTitle> {item.title} </TextProductTitle>
-       <ImageProduct source={{ uri: item.image }} />
-
-       <PriceProduct>Valor {formatPrice(item.price)} </PriceProduct>
-
-     </CardProducts>
-    </CardProductsContainer>
-   </BodyPageHome>
-
-  )
+          <CardProductsContainer>
+          {products.map(product =>
+            <CardProducts key={String(product.id)}>
+            <ImageProduct source={{ uri: product.image }} />
+              <TextProductTitle> {product.title} </TextProductTitle>
+              <TextProductDescription>{product.description}</TextProductDescription>
+          </CardProducts>
+         )}
+        </CardProductsContainer>
+     </BodyPageHome>
+   )
 }
 
+const mapDispatchProps = dispatch =>
+  bindActionCreators(CartActions,dispatch);
 
-render() {
-
-
-  const { products } = this.state;
-
-  return(
-    <>
-      <Header>
-        <GroupItems>
-        <Logo />
-          <Icon>
-          <ShopppingCart
-            name="shopping-basket"
-            color="#475df3" size={80}
-            onPress={ () => this.handleNavigate()}/>
-            </Icon>
-          </GroupItems>
-      </Header>
-      < >
-
-      <List
-          data={products}
-          //extraData={this.props}
-          extraData={[products, this.props.amount]}
-          keyExtractor={(item) => String(item.id)}
-          horizontal
-          renderItem={this.showProducts}
-        />
-
-      </>
-    </>
-    );
-  }
-}
+export default connect(mapDispatchProps)(Description);
