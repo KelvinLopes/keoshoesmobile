@@ -212,6 +212,32 @@ alignItems: center;
 color: #50fa7b;
 `;
 
+export const ViewTextAmountCart = styled.View`
+
+top: -120px;
+left: -25px;
+borderRadius: 50px;
+background: hotpink,
+borderRadius: 15px;
+width: 30px;
+height: 30px;
+zIndex: 7;
+`;
+
+export const TextAmountCart = styled.Text`
+
+fontFamily: Ubuntu;
+fontSize: 18px;
+textAlign: center;
+
+
+marginTop: -18px;
+marginBottom: 10px;
+paddingTop: 20px;
+justifyContent: center;
+alignItems: center;
+color: #fff;
+`;
 
 export const TextButtonAddToCart = styled.Text`
 

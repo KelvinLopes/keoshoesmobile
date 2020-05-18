@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux'
 import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/formatprice';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
+import ShopppingEmptyCart from 'react-native-vector-icons/MaterialIcons';
 
 import { View, Text, ScrollView } from 'react-native';
 import logo from '../../assets/images/logo.png';
-
 
 import ButtonIncrement  from 'react-native-vector-icons/MaterialIcons';
 import ButtonDrecement from 'react-native-vector-icons/MaterialIcons';
@@ -28,15 +28,15 @@ import {
   ButtonControlsProductAmount,
   ButtonControlsProductDelete,
   NumberSubtotal,
-  TotalValueProduct,
   TextSubTotal,
   TextTotalItemsCart,
   TextTotalValue,
   TextAmount,
   TextUnicValue,
   Scroll,
-  TottalHeader,
-  TottalItemsCart
+  TotalHeader,
+  TotalItemsCart,
+  EmptyCart
 }
   from './style';
 
@@ -54,62 +54,80 @@ function Cart( {navigation, products, total, removeFromCart, updateAmountRequest
 
     return(
       <>
-        <TottalHeader>
+        <TotalHeader>
         <TextTotalValue>{total}</TextTotalValue>
-        </TottalHeader>
-        <TottalItemsCart>
-        <ShopppingCart name="add-shopping-cart" color="#50fa7b" size={35} />
-        <TextTotalItemsCart>com {products.length} itens</TextTotalItemsCart>
-        </TottalItemsCart>
-
+        </TotalHeader>
+        <TotalItemsCart>
+        <ShopppingCart name="add-shopping-cart" color="rgba(72, 167, 243, 1)" size={35} />
+        <TextTotalItemsCart>
+          { products.length > 1 ? ` ${products.length} com itens` :
+            products.length > 0 ? ` ${products.length} com item`  :
+           'Vazio'
+          }
+          </TextTotalItemsCart>
+        </TotalItemsCart>
       <Scroll>
       <BodyPageHome>
-      <CardProductsContainer>
-        {products.map(product =>
-          <CardProducts key={String(product.id)}>
-          <ImageProduct source={{ uri: product.image }} />
-            <TextProductTitle> {product.title} </TextProductTitle>
-            <TextUnicValue>Valor unitário</TextUnicValue>
-            <PriceProduct> {product.priceFormatted} </PriceProduct>
-              <TextSubTotal>Subtotal</TextSubTotal>
-              <NumberSubtotal>{product.subtotal}</NumberSubtotal>
+        {
+        products.length ?
+        (
+          <CardProductsContainer>
+          {products.map(product =>
+            <CardProducts key={String(product.id)}>
+            <ImageProduct source={{ uri: product.image }} />
+              <TextProductTitle> {product.title} </TextProductTitle>
+              <TextUnicValue>Valor unitário</TextUnicValue>
+              <PriceProduct> {product.priceFormatted} </PriceProduct>
+                <TextSubTotal>Subtotal</TextSubTotal>
+                <NumberSubtotal>{product.subtotal}</NumberSubtotal>
 
-              <ProductControls  >
-              <GroupControlsAddAndRemove>
-              <TextAmount>Quant.</TextAmount>
-              <ButtonControlsProductAmount onPress={ () => decrement(product)}>
-                <ButtonIncrement
-                      name="remove-circle-outline"
-                      size={30}
-                      color="#475df3"
-                    />
-                  </ButtonControlsProductAmount>
-
-                  <ProductAmount value={String(product.amount)}/>
-
-                  <ButtonControlsProductAmount onPress={ () => increment(product) }>
-                    <ButtonDrecement
-                        name="add-circle-outline"
+                <ProductControls  >
+                <GroupControlsAddAndRemove>
+                <TextAmount>Quant.</TextAmount>
+                <ButtonControlsProductAmount onPress={ () => decrement(product)}>
+                  <ButtonIncrement
+                        name="remove-circle-outline"
                         size={30}
                         color="#475df3"
                       />
-                  </ButtonControlsProductAmount>
+                    </ButtonControlsProductAmount>
 
-                    </GroupControlsAddAndRemove>
+                    <ProductAmount value={String(product.amount)}/>
 
-                    <SpaceDelete />
+                    <ButtonControlsProductAmount onPress={ () => increment(product) }>
+                      <ButtonDrecement
+                          name="add-circle-outline"
+                          size={30}
+                          color="#475df3"
+                        />
+                    </ButtonControlsProductAmount>
 
-                    <ButtonControlsProductDelete onPress={() => removeFromCart(product.id)}>
-                      <ButtonDeleteItem
-                        name="delete-forever"
-                        size={30}
-                        color="#475df3"
-                      />
-                    </ButtonControlsProductDelete>
-                </ProductControls>
-        </CardProducts>
-       )}
-      </CardProductsContainer>
+                      </GroupControlsAddAndRemove>
+
+                      <SpaceDelete />
+
+                      <ButtonControlsProductDelete onPress={() => removeFromCart(product.id)}>
+                        <ButtonDeleteItem
+                          name="delete-forever"
+                          size={30}
+                          color="#475df3"
+                        />
+                      </ButtonControlsProductDelete>
+                  </ProductControls>
+          </CardProducts>
+         )}
+        </CardProductsContainer>
+        )
+        :
+        (
+        <EmptyCart>
+           <ShopppingCart
+           name="remove-shopping-cart"
+           color="rgba(21, 206, 188, 1)"
+           size={135} />
+        </EmptyCart>
+        )
+     }
      </BodyPageHome>
      </Scroll>
      </>

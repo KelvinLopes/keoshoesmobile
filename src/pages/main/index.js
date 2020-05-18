@@ -31,7 +31,9 @@ import {
   ProductAmount,
   ProductTextAmount,
   ContainerIconShooppingButtonAddToCart,
-  PriceProduct
+  PriceProduct,
+  ViewTextAmountCart,
+  TextAmountCart
 }
   from './style';
 
@@ -125,7 +127,10 @@ render() {
           <ShopppingCart
             name="shopping-basket"
             color="#475df3" size={80}
-            onPress={ () => this.handleNavigateToCart()}/>
+            onPress={ () => this.handleNavigateToCart()} />
+            <ViewTextAmountCart>
+            <TextAmountCart>{products.length}</TextAmountCart>
+            </ViewTextAmountCart>
             </Icon>
           </GroupItems>
       </Header>

@@ -5,17 +5,18 @@ import logo from '../../assets/images/logo.png';
 
 export const BodyPageHome = styled.View`
 
-background: #282a36;
+background:rgba(30, 33, 41, 1);
 height: auto;
 alignItems: center;
 justifyContent: center;
 flexDirection: row;
 
 width: auto;
+zIndex: 5;
 
 `;
 
-export const TottalHeader = styled.View`
+export const TotalHeader = styled.View`
 
 backgroundColor: rgba(30, 33, 41, 1);
 height: 50px;
@@ -29,7 +30,7 @@ zIndex: 5;
 width: auto;
 `;
 
-export const TottalItemsCart = styled.View`
+export const TotalItemsCart = styled.View`
 
 backgroundColor: rgba(30, 33, 41, 1);
 height: 50px;
@@ -50,7 +51,7 @@ export const Scroll = styled.ScrollView.attrs({
 })`
 height: auto;
 marginTop: 0;
-background: #282a36;
+background: rgba(30, 33, 41, 1);
 `;
 
 export const CardProductsContainer = styled.View`
@@ -229,7 +230,7 @@ export const TextTotalItemsCart = styled.Text`
 
   fontSize: 20px;
   fontFamily: Ubuntu;
-  color: #50fa7b;
+  color: rgba(72, 167, 243, 1);
   marginTop: 5px;
 `;
 
@@ -256,19 +257,17 @@ marginTop: 10px;
 
 `;
 
-
-export const TotalValueProduct = styled.View`
-
-  background: transparent;
-  width: 200;
-  alignItems: center;
-  flexDirection: column;
-  marginTop: 40px;
-`;
-
 export const SpaceDelete = styled.View`
 
   background: transparent;
   width: 60px;
   flexDirection: row;
+`;
+
+export const EmptyCart = styled.View`
+
+  alignItems: center;
+  justifyContent: center;
+  flexDirection: column;
+  marginTop: 130px;
 `;
