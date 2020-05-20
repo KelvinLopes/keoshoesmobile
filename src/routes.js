@@ -3,14 +3,13 @@ import { createStackNavigator  } from '@react-navigation/stack';
 
 import Main from './pages/main';
 import Cart from './pages/cart';
-import Description from './pages/description';
 
 import './config/ReactotronConfig';
 
 const Stack = createStackNavigator();
 
 
-  export default function Routes (  ) {
+  export default function Routes ( ) {
 
     return(
 
@@ -35,11 +34,6 @@ const Stack = createStackNavigator();
             options={ { title: 'Total do carrinho' } }
           />
 
-          <Stack.Screen
-            name="Description"
-            component = { Description }
-            options={ { title: 'Description Product' } }
-          />
       </Stack.Navigator>
   );
 }

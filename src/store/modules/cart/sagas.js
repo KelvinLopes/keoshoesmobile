@@ -5,7 +5,7 @@ import NavigationService from '../../../services/navigation';
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/formatprice';
 
-import { addToCartSuccess, updateAmountSuccess, readDescriptionSuccess } from './actions';
+import { addToCartSuccess, updateAmountSuccess } from './actions';
 
 
 function* addToCart( { id } ) {
@@ -62,9 +62,9 @@ function* updateAmount({ id, amount }) {
       'KeoShoes Stock',
       'Quantidade solicitada fora de estoque 📦️.',
       [
-      {
-        text: "Entendi"
-      }
+        {
+          text: "Entendi"
+        }
       ]
       );
     return;

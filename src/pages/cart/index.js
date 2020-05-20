@@ -39,8 +39,7 @@ import {
   from './style';
 
 
-function Cart( {navigation, products, total, removeFromCart, updateAmountRequest })  {
-
+function Cart( { products, total, removeFromCart, updateAmountRequest })  {
 
   function decrement(product) {
     updateAmountRequest(product.id, product.amount -1)

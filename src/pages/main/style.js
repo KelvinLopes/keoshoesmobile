@@ -213,14 +213,6 @@ textAlign: left;
 
 `;
 
-export const ScrollViewCardProduct = styled.ScrollView`
-
-  marginTop: auto;
-  marginLeft: 35px;
-
-
-`;
-
 export const PriceProduct = styled.Text`
 
 fontFamily: Ubuntu;
@@ -247,19 +239,6 @@ height: 30px;
 zIndex: 7;
 `;
 
-export const TextAmountCart = styled.Text`
-
-fontFamily: Ubuntu;
-fontSize: 18px;
-textAlign: center;
-
-marginTop: -18px;
-marginBottom: 10px;
-paddingTop: 20px;
-justifyContent: center;
-alignItems: center;
-color: #fff;
-`;
 
 export const TextButtonAddToCart = styled.Text`
 

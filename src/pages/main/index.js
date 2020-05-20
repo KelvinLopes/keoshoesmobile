@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, View, FlatList, Linking, TouchableOpacity, Alert } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import api from '../../services/api'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CartActions from '../../store/modules/cart/actions';
 
-
 import { formatPrice } from '../../util/formatprice';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import ShopppingCartButton from 'react-native-vector-icons/MaterialIcons';
-
-import logo from '../../assets/images/logo.png';
+import TextCartSize from '../../components/Header';
 
 import {
   Header,
@@ -34,7 +32,6 @@ import {
   ContainerIconShooppingButtonAddToCart,
   PriceProduct,
   ViewTextAmountCart,
-  TextAmountCart
 }
   from './style';
 
@@ -44,9 +41,11 @@ class Main extends Component {
     products: [],
   };
 
+
  async componentDidMount() {
   this.loadProducts();
 }
+
 
 loadProducts = async () => {
 
@@ -112,7 +111,7 @@ showProducts = ({ item }) => {
 
 render() {
 
-  const { products} = this.state;
+  const { products } = this.state;
 
   return(
     <>
@@ -126,13 +125,12 @@ render() {
             color="#475df3" size={80}
             onPress={ () => this.handleNavigateToCart()} />
             <ViewTextAmountCart>
-            <TextAmountCart>{products.length}</TextAmountCart>
+            <TextCartSize />
             </ViewTextAmountCart>
             </Icon>
           </GroupItems>
       </Header>
-      </HeaderBackground>
-
+    </HeaderBackground>
         <List
           data={products}
           extraData={[products, this.props.amount]}
@@ -157,5 +155,6 @@ const mapDispatchToProps = dispatch =>
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Main);
+
