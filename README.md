@@ -12,7 +12,7 @@
  </p>
  
  <p>
-    Dentro do carrinho você ainda pode ver a quantidade de produtos presente nele, o valor de cada item, subtotal de cada um e o total geral. Pensando em melhorar a visualização, cada calçado é redenrizado dentro de um card, onde se pode aumentar ou diminuir a quantidade, excluir e voltar a página inicial.
+    Dentro do dele você ainda pode ver a quantidade de produtos presente nele, o valor de cada item, subtotal de cada um e o total geral. Pensando em melhorar a visualização, cada calçado é redenrizado dentro de um card, onde se pode aumentar ou diminuir a quantidade, excluir e voltar a página inicial.
 </p>
 
 <p>
@@ -33,7 +33,7 @@
 * Immer
 * Redux
 * Redux Saga
-* React Icons
+* React Native vector icons
 * Reactotron React Native
 * Reactotron Redux
 * Reactotron Redux Saga
