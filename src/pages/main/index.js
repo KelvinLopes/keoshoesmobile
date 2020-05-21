@@ -9,7 +9,7 @@ import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/formatprice';
 import ShopppingCart from 'react-native-vector-icons/MaterialIcons';
 import ShopppingCartButton from 'react-native-vector-icons/MaterialIcons';
-import TextCartSize from '../../components/Header';
+import TextCartSize from '../../components/TextAmountCart';
 
 import {
   Header,
