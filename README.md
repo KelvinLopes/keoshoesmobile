@@ -21,7 +21,7 @@
 
 
 <p align="center"> 
-  <img src=""      width="800" heigth="900" align="center" alt="Tela do app KeoShoes mobile"/>
+  <img src="https://github.com/KelvinLopes/keoshoesmobile/blob/master/Screenshot%202020-05-21%20at%2006.58.19.png"      width="400" heigth="700" align="center" alt="Tela do app KeoShoes mobile"/>
  </p>
 
 ### Tecnologias 🔧🚙🔌
