@@ -37,6 +37,7 @@
 * Reactotron React Native
 * Reactotron Redux
 * Reactotron Redux Saga
+* React Navigation 5
 
 ### Dev dependences 🤝  🤜🤛
 * Eslint 
