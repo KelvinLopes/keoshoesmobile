@@ -47,6 +47,8 @@
 
 ### Dicas
 
+* Tenha um ambiente prepado para o React Native: https://reactnative.dev/docs/environment-setup
+
 * Se baixar ou fazer o clone do repositório não se esqueça de atualizar as libs para ter as atualizações mais recentes.
 
 * No yarn, use yarn upgrade e em seguida rode o comando yarn.
