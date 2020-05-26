@@ -54,3 +54,7 @@
 * No yarn, use yarn upgrade e em seguida rode o comando yarn.
 
 * No npm, acesse o documento: https://docs.npmjs.com/cli-commands/update.html
+
+* Use o comando interno da aplicação yarn server, para que os produtos sejam renderizados em tela.
+
+* Se em dispositivo físico, use o comando: ~/Android/Sdk/platform-tools/adb reverse tcp:3333 tcp:3333 e pressione a tecla r no terminal para reiniciar o app, **caso** o local onde instalou as ferramentas de desenvolvimento Android for diferente, modifique esse caminho. Com isso o app terá carregado todas as informações referentes aos produtos, desde imagens a descrição.
